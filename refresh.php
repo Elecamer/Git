@@ -4,6 +4,7 @@
 	$id=$_GET['id'];
 	$passwd=$_GET['passwd'];
 	$auth=0;
+
 	if(mysqli_connect_errno()){
 		echo "failed...<br>";
 	}
@@ -19,9 +20,11 @@
 		$PORT= $_SERVER['REMOTE_PORT'];
 		$TIME=date("His");
 	
-		if( mysqli_query($conn,"Insert into p2p values('$id','$IP',$PORT,$TIME);")!=1)
+		if( mysqli_query($conn,"Insert into p2p values('$id','$IP',$PORT);")!=1)
 		{
-			mysqli_query($conn,"update p2p set Ip='$IP',Port=$PORT,Time=$TIME where Id='$id';");
+	
+			mysqli_query($conn,"update p2p set Ip='$IP',Port=$PORT where Id='$id';");
 		} 
+		mysqli_query($conn,"update user_info set Time=$TIME where Id='$id';");
 	}
 ?>

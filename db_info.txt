@@ -3,13 +3,15 @@ DB_NAME : Graduation
 Tables :
 
 user_info{
-	Id (char[10])
-	Passwd (varchar[20])
+        Id (char[10] primary key)
+        Passwd (varchar[20] not null)
+        Time (time)
 }
 
 p2p{
-	Id (char[10] foreign key reference user_info (Id))
-	Ip (char[16])
-	Port (smallint unsigned)
-	Time (time)
+        Id (char[10] primary key foreign key reference user_info (Id) delete on cascade)
+        Ip (char[16])
+        Port (smallint unsigned)
 }
+~
+
