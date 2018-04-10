@@ -5,8 +5,8 @@
 		echo "failed...<br>";
 	}
 	else{
-		$id=$_GET["id"];
-		$passwd=$_GET["passwd"];
+		$id=$_POST["id"];
+		$passwd=$_POST["passwd"];
 		$time=date("His");
 		if($id!=""&&$passwd!=""){
 			$isExist=mysqli_query($conn,"Insert into user_info values('$id','$passwd',$time);");
